@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const todoController = require('../../controllers/fruitController');
+const todoController = require('../../controllers/todoController');
 
 module.exports = router;
 
 // /api/fruit/
-router.route('/').get(fruitController.findAll);
+router.route('/').get(todoController.findAll);
 
 // /api/fruit/:data  route to create fruit
 router.route('/').post(fruitController.createFruit);

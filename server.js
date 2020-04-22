@@ -1,29 +1,29 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const routes = require("./routes");
-const app = express();
+var express = require("express");
+var mongoose = require("mongoose");
+var routes = require("./routes");
+var app = express();
 
-const PORT = process.env.PORT || 4000;
+var PORT = process.env.PORT || 4000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var databaseToUse = "";
+var databaseToUse = "mongodb://127.0.0.1:27017/todos";
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  databaseToUse =
-    "mongodb://gabe:a123456@ds129010.mlab.com:29010/heroku_qpsq8tsw";
-} else {
-  databaseToUse = "mongodb://127.0.0.1:27017/todos";
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+//   databaseToUse =
+//     "mongodb://gabe:a123456@ds129010.mlab.com:29010/heroku_qpsq8tsw";
+// } else {
+//   databaseToUse = "mongodb://127.0.0.1:27017/todos";
+// }
 
 
 
 
 app.use(routes);
 
-const MONGODB_URI = process.env.MONGODB_URI || databaseToUse;
+const MONGODB_URI = databaseToUse;
 
 mongoose.Promise = global.Promise;
 
