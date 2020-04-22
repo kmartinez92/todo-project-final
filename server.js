@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
   databaseToUse =
     "mongodb://gabe:a123456@ds129010.mlab.com:29010/heroku_qpsq8tsw";
 } else {
-  databaseToUse = "mongodb://localhost/reactBoilerplate";
+  databaseToUse = "mongodb://127.0.0.1:27017/todos";
 }
 
 
