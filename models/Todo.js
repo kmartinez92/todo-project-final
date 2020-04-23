@@ -1,7 +1,7 @@
-var mongoose = require('mongoose'); 
-var Schema = mongoose.Schema; 
+const mongoose = require('mongoose'); 
+const Schema = mongoose.Schema; 
 
-let todoSchema = new Schema({
+const todoSchema = new Schema({
     todo_description: {
         type: String
     }, 
@@ -20,6 +20,6 @@ let todoSchema = new Schema({
     }
 }); 
 
-var Todo = mongoose.model('Todo', todoSchema); 
+const Todo = mongoose.model('Todo', todoSchema); 
 
-module.exports = Todo; 
+module.exports = Todo;

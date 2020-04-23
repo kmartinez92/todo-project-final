@@ -7,13 +7,10 @@ module.exports = router;
 router.route('/').get(todoController.findAll);
 
 // /api/fruit/:data  route to create fruit
-router.route('/').post(fruitController.createFruit);
+router.route('/create').post(todoController.createTodo);
 
-// /api/fruit/add route to add fruit quantity
-router.route('/add/').put(fruitController.addFruit);
+// /api/fruit/add route to update todo
+router.route('/update').put(todoController.updateTodo);
 
-// /api/fruit/minus route to decrease fruit quantity
-router.route('/minus/').put(fruitController.minusFruit);
-
-// /api/fruit/delete  route to delete fruit
-router.route('/delete/').post(fruitController.deleteFruit)
+// /api/fruit/delete  route to delete todo
+router.route('/delete').post(todoController.deleteTodo);
