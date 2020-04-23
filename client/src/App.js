@@ -2,9 +2,9 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom"; 
 import "bootstrap/dist/css/bootstrap.min.css"; 
 
-import CreateTodo from "./components/create-todo.component";
-import EditTodo from "./components/edit-todo.component";
-import TodosList from "./components/todos-list.component";
+import createTodo from "./components/create-todo.component";
+import editTodo from "./components/edit-todo.component";
+import todosList from "./components/todos-list.component";
 
 function App() {
   return (
@@ -37,9 +37,9 @@ function App() {
 
 
             {/* BELOW ARE THE COMPONENTS FOR REACT FRONT END  */}
-                <Route path="/" exact component={TodosList} />
-                <Route path="/update" component={EditTodo} />
-                <Route path="/create" component={CreateTodo}/>
+                <Route path="/" exact component={todosList} />
+                <Route path="/update" component={editTodo} />
+                <Route path="/create" component={createTodo}/>
         </div>
       
     </Router>

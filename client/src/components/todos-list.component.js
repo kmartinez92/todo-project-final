@@ -14,7 +14,7 @@ var Todo = props => (
     </tr>
 )
 
-export default class TodosList extends Component {
+export default class todosList extends Component {
 
     constructor(props){ 
         super(props); 
