@@ -23,7 +23,7 @@ export default class TodosList extends Component {
 
     //code below is requesting the information in the DB and posting it to the dom
     componentDidMount() {
-        axios.get('http://localhost:4000/todos/')
+        axios.get('http://localhost:3001/todos/')
             .then(response => {
                 this.setState({todos: response.data}); 
             })

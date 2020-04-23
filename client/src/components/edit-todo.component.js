@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
 import axios from 'axios'; 
 
-export default class EditTodo extends Component {
+export default class editTodo extends Component {
 
     constructor(props){ 
         super(props); 
@@ -23,7 +23,7 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() { 
-        axios.get('http://localhost:4000/todos/'+this.props.match.params.id)
+        axios.get('http://localhost:3001/todos/'+this.props.match.params.id)
                 .then(response => { 
                     this.setState({
                         todo_description: response.data.todo_description, 
@@ -72,7 +72,7 @@ export default class EditTodo extends Component {
                 todo_completed: this.state.todo_completed
             }; 
 
-            axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
+            axios.post('http://localhost:3001/todos/update/'+this.props.match.params.id, obj)
                     .then(res => console.log(res.data)); 
 
                     //code below lets the user go back to the home page once they submit the update
@@ -115,7 +115,7 @@ export default class EditTodo extends Component {
             var todoToDelete = this.props.match.params.id
             console.log("Trying to Delete " + todoToDelete);
             //Url parsing, grab the object ID
-            const url = ('http://localhost:4000/delete/'+ todoToDelete);
+            const url = ('http://localhost:3001/delete/'+ todoToDelete);
                 
                     axios
                       .post(url)
