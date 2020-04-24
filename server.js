@@ -12,7 +12,7 @@ var databaseToUse = "";
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  databaseToUse = "mongodb://nicknaieem:Password1@ds155631.mlab.com:55631/heroku_bslkc1b9";
+  databaseToUse = "mongodb://username:password1@ds059938.mlab.com:59938/heroku_mb0llq72";
 } 
 else {
   databaseToUse = "mongodb://127.0.0.1:27017/todos";

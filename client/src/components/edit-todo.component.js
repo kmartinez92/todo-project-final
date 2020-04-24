@@ -1,5 +1,6 @@
 import React, {Component} from 'react'; 
-import axios from 'axios'; 
+import Utils from "../utils/TodoAPI";
+import axios from "axios"; 
 
 export default class editTodo extends Component {
 
@@ -23,19 +24,22 @@ export default class editTodo extends Component {
     }
 
     componentDidMount() { 
-        axios.get('http://localhost:3001/todos/'+this.props.match.params.id)
-                .then(response => { 
-                    this.setState({
-                        todo_description: response.data.todo_description, 
-                        todo_responsible: response.data.todo_responsible,
-                        todo_priority: response.data.todo_priority,
-                        todo_completed: response.data.todo_completed
-                    })
-                })
-                .catch(function(error){
-                    console.log(error) 
-                })
+        this.getToDos();
     }
+        getToDos =()=>{
+        Utils.getTodo()
+          .then((response) => {
+            this.setState({
+              todo_description: response.data.todo_description,
+              todo_responsible: response.data.todo_responsible,
+              todo_priority: response.data.todo_priority,
+              todo_completed: response.data.todo_completed,
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });     
+        }
         //code below is what is going to handle the event that will update the state of the component 
         onChangeTodoDescription(e){
             this.setState({
@@ -72,13 +76,15 @@ export default class editTodo extends Component {
                 todo_completed: this.state.todo_completed
             }; 
 
-            axios.post('http://localhost:3001/todos/update/'+this.props.match.params.id, obj)
-                    .then(res => console.log(res.data)); 
+            Utils.updateTodo(obj).then(res => console.log(res.data));
+
+            // axios.post('http://localhost:3001/todos/update/'+this.props.match.params.id, obj)
+            //         .then(res => console.log(res.data)); 
 
                     //code below lets the user go back to the home page once they submit the update
             this.props.history.push('/'); 
 
-            }
+        }
         
                     //code below to remove todo (NEED TO FIX)
     

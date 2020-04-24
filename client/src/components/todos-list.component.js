@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; 
 import {Link} from 'react-router-dom'; 
-import axios from 'axios'; 
+import Utils from '../utils/TodoAPI'
+
 
 
 var Todo = props => (
@@ -23,15 +24,18 @@ export default class todosList extends Component {
 
     //code below is requesting the information in the DB and posting it to the dom
     componentDidMount() {
-        axios.get('http://localhost:3001/todos/')
-            .then(response => {
-                this.setState({todos: response.data}); 
-            })
+        this.getToDos();
+    }
 
-            .catch(function(error) {
-                console.log(error); 
-                
-            })
+
+    getToDos =()=>{
+        Utils.getTodo()
+          .then((response) => {
+            this.setState({ todos: response.data });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });     
     }
 
     todoList() {

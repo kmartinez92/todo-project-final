@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
-import axios from 'axios'; 
+import Utils from "../utils/TodoAPI";
 
-export default class createTodo extends Component {
+export default class CreateTodo extends Component {
 
     constructor(props) {
         super(props); 
@@ -47,6 +47,10 @@ export default class createTodo extends Component {
         console.log(`Todo Priority: ${this.state.todo_priority}`);
         console.log(`Todo Completed: ${this.state.todo_completed}`);
 
+
+        
+       
+
         var newTodo = { 
             todo_description: this.state.todo_description, 
             todo_responsible: this.state.todo_responsible, 
@@ -54,8 +58,12 @@ export default class createTodo extends Component {
             todo_completed: this.state.todo_completed
         }
 
-        axios.post('http://localhost:3001/todos/add', newTodo)
-            .then(res => console.log(res.data)); 
+            console.log("This is the todo");
+            console.log(newTodo);
+            Utils.createTodo(newTodo)
+            .then(res => console.log(res.data))
+            .catch(err => {console.log(err)})
+        
 
 
         this.setState({

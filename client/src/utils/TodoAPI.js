@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   getTodo: () => {
-    return axios.get("/api");
+    return axios.get("/api/todos");
   },
   createTodo: (data) => {
     return axios.post("/api/create", data);
