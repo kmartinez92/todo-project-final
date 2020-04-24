@@ -25,15 +25,24 @@ router.post("/api/create", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-//route to add Todos
+//route to update Todos
 router.put("/api/update", (req, res) => {
-  let id = mongoose.Types.ObjectId(req.body.todoID);
+
+  var data = {
+    description: todo.todo_description = req.body.todo_description,
+    responsible: todo.todo_responsible = req.body.todo_responsible,
+    priority: todo.todo_priority = req.body.todo_priority,
+    completed: todo.todo_completed = req.body.todo_completed
+
+  }; 
+
+  let id = mongoose.Types.ObjectId(req.body.id);
   db.Todo.findOneAndUpdate(
     { _id: id },
-    { $set: { quantity: req.body.quantity } }
+    { $set: data }
   )
-    .then((fruit) => {
-      res.json(fruit);
+    .then((todo) => {
+      res.json(todo);
     })
     .catch((err) => {
       res.json(err);
@@ -42,10 +51,7 @@ router.put("/api/update", (req, res) => {
 
 
 // // update function needs to be adjusted and update below 
-// // todo.todo_description = req.body.todo_description;
-// // todo.todo_responsible = req.body.todo_responsible;
-// // todo.todo_priority = req.body.todo_priority;
-// // todo.todo_completed = req.body.todo_completed; 
+
 
 // //route to delete Todo
 // router.post("/api/delete", (req, res) => {
